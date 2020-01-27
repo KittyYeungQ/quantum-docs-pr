@@ -26,7 +26,7 @@ remarks: |-
     }
     ```
 examples: |-
-    Prepare a state $\frac{1}{2}(\ket{00} - \ket{01} + \ket{10} + ket{11})$:
+    Prepare a state $\frac{1}{2}(\ket{00} - \ket{01} + \ket{10} + \ket{11})$:
     ```qsharp
     using (register = Qubit[2]) {
         ApplyToEach(H, register);
