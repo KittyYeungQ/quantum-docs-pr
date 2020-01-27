@@ -6,13 +6,14 @@ namespace: Microsoft.Quantum.Canon
 summary: |-
     Returns a unitary operator that applies an oracle on the target register if the control register state corresponds to a specified bit mask.
     
-    Given a Boolean array `bits` and a unitary operation `oracle`, the return of this function will perform the following steps:
-     * apply an X gate to each qubit of the control register that corresponds to `false` element of the `bits`;
+    Given a Boolean array `bits` and a unitary operation `oracle`, the output of this function 
+    is an operation that performs the following steps:
+     * apply an `X` operation to each qubit of the control register that corresponds to `false` element of the `bits`;
      * apply `Controlled oracle` to the control and target registers;
-     * apply an X gate to each qubit of the control register that corresponds to `false` element of the `bits` again to return the control register to the original state.
+     * apply an `X` operation to each qubit of the control register that corresponds to `false` element of the `bits` again to return the control register to the original state.
 remarks: |-
     The length of `bits` and `controlRegister` must be equal.
-
+examples: |-
     The following are equivalent:
     ```qsharp
     (ControlledOnBitString(bits, oracle))(controlRegister, targetRegister);
@@ -25,8 +26,8 @@ remarks: |-
         Controlled oracle(controlRegister, targetRegister);
     }
     ```
-examples: |-
-    Prepare a state $\frac{1}{2}(\ket{00} - \ket{01} + \ket{10} + \ket{11})$:
+
+    The following code prepares a state $\frac{1}{2}(\ket{00} - \ket{01} + \ket{10} + \ket{11})$:
     ```qsharp
     using (register = Qubit[2]) {
         ApplyToEach(H, register);
@@ -38,7 +39,7 @@ input:
   content: "(bits : Bool[], oracle : ('T => Unit is Adj + Ctl))"
   types:
   - name: bits
-    summary: Boolean array.
+    summary: The bitstring to control the given unitary operator on.
     isArray: true
     isPrimitive: true
     uid: Bool
